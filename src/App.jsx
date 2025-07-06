@@ -4,6 +4,10 @@ import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import LockedScreen from './components/LockedScreen';
 import PresidentLoginModal from './components/PresidentLoginModal';
 import AdminPanel from './components/AdminPanel';
+import EnableTerminalModal from './components/EnableTerminalModal';
+import VotingScreen from './components/VotingScreen';
+import SuccessScreen from './components/SuccessScreen';
+import { API_ENDPOINTS } from './config';
 
 const theme = createTheme({
     palette: {
@@ -39,7 +43,7 @@ export default function App() {
 
     const handleVote = async (payload) => {
         try {
-            const response = await fetch('http://localhost:3001/api/votar', {
+            const response = await fetch(API_ENDPOINTS.VOTAR, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
@@ -74,6 +78,23 @@ export default function App() {
                         onClose={resetToLocked}
                     />
                 );
+            case 'confirmEnable':
+                return (
+                    <EnableTerminalModal
+                        onConfirm={() => setAppState('voting')}
+                        onCancel={resetToLocked}
+                        isObserved={isObserved}
+                    />
+                );
+            case 'voting':
+                return (
+                    <VotingScreen
+                        onVote={handleVote}
+                        isObserved={isObserved}
+                    />
+                );
+            case 'success':
+                return <SuccessScreen />;
             default:
                 return <LockedScreen onAdminAccess={() => setAppState('admin')} />;
         }

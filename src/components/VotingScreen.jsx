@@ -8,19 +8,19 @@ import {
     Button
 } from '@mui/material';
 import AppHeader from './AppHeader';
+import { API_ENDPOINTS, CURRENT_ELECTION_ID, CURRENT_ESTABLECIMIENTO_ID } from '../config';
 
 const VotingScreen = ({ onVote, isObserved }) => {
     const [listas, setListas] = useState([]);
     const [papeletas, setPapeletas] = useState([]);
     const [selection, setSelection] = useState(null);
-    const ELECTION_ID = 1;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const [listasRes, papeletasRes] = await Promise.all([
-                    fetch(`http://localhost:3001/api/listas?eleccion_id=${ELECTION_ID}`),
-                    fetch(`http://localhost:3001/api/papeletas`)
+                    fetch(`${API_ENDPOINTS.LISTAS}?eleccion_id=${CURRENT_ELECTION_ID}`),
+                    fetch(API_ENDPOINTS.PAPELETAS)
                 ]);
                 setListas(await listasRes.json());
                 setPapeletas(await papeletasRes.json());
@@ -38,9 +38,8 @@ const VotingScreen = ({ onVote, isObserved }) => {
     const handleSubmitVote = () => {
         if (!selection) return;
         const payload = {
-            id_eleccion: ELECTION_ID,
-            id_establecimiento: 1, // Esto debería ser dinámico en una aplicación real
-            observado: isObserved,
+            id_eleccion: CURRENT_ELECTION_ID,
+            id_establecimiento: CURRENT_ESTABLECIMIENTO_ID,
             id_lista: selection.type === 'lista' ? selection.id : null,
             id_papeleta: selection.type === 'papeleta' ? selection.id : null,
         };
@@ -63,7 +62,7 @@ const VotingScreen = ({ onVote, isObserved }) => {
                     {[...listas, ...papeletas].map((option) => {
                         const isLista = !!option.partido_nombre;
                         const type = isLista ? 'lista' : 'papeleta';
-                        const id = isLista ? option.id_lista : option.id_papeleta;
+                        const id = isLista ? option.id_Lista || option.id_lista : option.id_Papeleta || option.id_papeleta;
                         const isSelected = selection?.type === type && selection?.id === id;
 
                         return (
@@ -83,7 +82,7 @@ const VotingScreen = ({ onVote, isObserved }) => {
                                     }}
                                 >
                                     <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
-                                        {isLista ? `Lista ${option.numero}` : option.nombre_opcion}
+                                        {isLista ? `Lista ${option.Numero || option.numero}` : option.nombre_opcion}
                                     </Typography>
                                     {isLista && <Typography color="text.secondary">{option.partido_nombre}</Typography>}
                                 </Paper>

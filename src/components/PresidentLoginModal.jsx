@@ -10,6 +10,7 @@ import {
     DialogContentText,
     DialogTitle,
 } from '@mui/material';
+import { API_ENDPOINTS } from '../config';
 
 const PresidentLoginModal = ({ onSuccess, onClose }) => {
     const [credencial, setCredencial] = useState('');
@@ -20,7 +21,7 @@ const PresidentLoginModal = ({ onSuccess, onClose }) => {
         setIsLoading(true);
         setError('');
         try {
-            const response = await fetch('http://localhost:3001/api/autoridades/validar', {
+            const response = await fetch(API_ENDPOINTS.VALIDAR_AUTORIDAD, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ credencial_civica: credencial }),

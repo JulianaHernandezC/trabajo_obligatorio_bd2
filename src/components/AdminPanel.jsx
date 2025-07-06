@@ -13,6 +13,7 @@ import {
     Checkbox
 } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
+import { API_ENDPOINTS, CURRENT_ELECTION_ID } from '../config';
 
 const AdminPanel = ({ onRegistrationSuccess, onNotFound, onClose }) => {
     const [credencial, setCredencial] = useState('');
@@ -28,7 +29,7 @@ const AdminPanel = ({ onRegistrationSuccess, onNotFound, onClose }) => {
         setCitizen(null);
         setIsLoading(true);
         try {
-            const response = await fetch(`http://localhost:3001/api/ciudadanos/buscar?credencial=${credencial}`);
+            const response = await fetch(`${API_ENDPOINTS.BUSCAR_CIUDADANO}?credencial=${credencial}`);
             if (!response.ok) {
                 throw new Error('Ciudadano no encontrado');
             }
@@ -49,11 +50,18 @@ const AdminPanel = ({ onRegistrationSuccess, onNotFound, onClose }) => {
         setError('');
 
         try {
-            const response = await fetch('http://localhost:3001/api/registrar-votante', {
+            console.log(API_ENDPOINTS.REGISTRAR_VOTANTE);
+            const response = await fetch(API_ENDPOINTS.REGISTRAR_VOTANTE, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id_ciudadano: citizen.id_ciudadano, id_eleccion: 1 }),
+                body: JSON.stringify({ 
+                    ci_ciudadano: citizen.CI, 
+                    id_eleccion: CURRENT_ELECTION_ID,
+                    credencial_civica: citizen.CredencialCivica,
+                    voto_observado: isObserved
+                }),
             });
+            console.log(response);
 
             if (response.status === 409) {
                 const errorData = await response.json();
@@ -110,9 +118,9 @@ const AdminPanel = ({ onRegistrationSuccess, onNotFound, onClose }) => {
                                     <PersonIcon />
                                 </Avatar>
                                 <Box>
-                                    <Typography variant="h6">{citizen.nombre} {citizen.apellido}</Typography>
+                                    <Typography variant="h6">{citizen.NombreCompleto}</Typography>
                                     <Typography variant="body2" color="text.secondary">
-                                        CI: {citizen.ci} | Credencial: {citizen.credencial_civica}
+                                        CI: {citizen.CI} | Credencial: {citizen.CredencialCivica}
                                     </Typography>
                                 </Box>
                             </Box>

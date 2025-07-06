@@ -1,0 +1,64 @@
+{
+  "hash": "69f7918b",
+  "configHash": "8765ad56",
+  "lockfileHash": "cfaaa6ba",
+  "browserHash": "2989c8e1",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "3d8398cb",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "9503812d",
+      "needsInterop": true
+    },
+    "@mui/material": {
+      "src": "../../node_modules/@mui/material/esm/index.js",
+      "file": "@mui_material.js",
+      "fileHash": "1e864174",
+      "needsInterop": false
+    },
+    "@mui/material/styles": {
+      "src": "../../node_modules/@mui/material/esm/styles/index.js",
+      "file": "@mui_material_styles.js",
+      "fileHash": "cf9d5251",
+      "needsInterop": false
+    },
+    "@mui/icons-material/WbSunny": {
+      "src": "../../node_modules/@mui/icons-material/esm/WbSunny.js",
+      "file": "@mui_icons-material_WbSunny.js",
+      "fileHash": "10285681",
+      "needsInterop": false
+    },
+    "@mui/icons-material/Person": {
+      "src": "../../node_modules/@mui/icons-material/esm/Person.js",
+      "file": "@mui_icons-material_Person.js",
+      "fileHash": "08f31463",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-JPFIJ2ZJ": {
+      "file": "chunk-JPFIJ2ZJ.js"
+    },
+    "chunk-4TM4KNXB": {
+      "file": "chunk-4TM4KNXB.js"
+    },
+    "chunk-C6WWHQR7": {
+      "file": "chunk-C6WWHQR7.js"
+    },
+    "chunk-4MSECZPR": {
+      "file": "chunk-4MSECZPR.js"
+    },
+    "chunk-Z66M2SHG": {
+      "file": "chunk-Z66M2SHG.js"
+    },
+    "chunk-3A6WRQ5K": {
+      "file": "chunk-3A6WRQ5K.js"
+    }
+  }
+}
