@@ -40,9 +40,6 @@ const LockedScreen = ({ onAdminAccess }) => {
                 <Typography variant="h6" color="text.secondary">
                     Esperando al próximo elector.
                 </Typography>
-                <Typography variant="body2" color="text.disabled" sx={{ mt: 4 }}>
-                    El presidente de mesa debe habilitar el sistema.
-                </Typography>
             </Box>
         </Box>
     );
