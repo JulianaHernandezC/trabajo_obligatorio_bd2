@@ -1,12 +1,13 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
+import escudoUruguayo from '../assets/escudoUruguayo.png';
 
 const AppHeader = ({ children }) => (
     <AppBar position="static">
         <Toolbar>
             <Box
                 component="img"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Coat_of_arms_of_Uruguay.svg/1200px-Coat_of_arms_of_Uruguay.svg.png"
+                src={escudoUruguayo}
                 alt="Escudo de Uruguay"
                 sx={{ height: 32, mr: 2 }}
             />

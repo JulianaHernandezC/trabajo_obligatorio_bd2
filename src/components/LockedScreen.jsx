@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { Person } from '@mui/icons-material';
 import AppHeader from './AppHeader'; // Importa el encabezado
+import escudoUruguayo from '../assets/escudoUruguayo.png';
 
 const LockedScreen = ({ onAdminAccess }) => {
     return (
@@ -25,7 +26,7 @@ const LockedScreen = ({ onAdminAccess }) => {
             <Box component="main" sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', p: 3, width: '100%' }}>
                 <Box
                     component="img"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Coat_of_arms_of_Uruguay.svg/1200px-Coat_of_arms_of_Uruguay.svg.png"
+                    src={escudoUruguayo}
                     alt="Escudo de Uruguay"
                     sx={{
                         width: { xs: '45%', sm: '30%', md: 192 },
