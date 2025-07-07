@@ -10,11 +10,11 @@ import {
 
 const EnableTerminalModal = ({ onEnable, onClose }) => (
     <Dialog open onClose={onClose}>
-        <DialogTitle>Registro Exi
-            toso</DialogTitle>
+        <DialogTitle>Registro Exitoso</DialogTitle>
         <DialogContent>
             <DialogContentText>
-                El ciudadano ha sido registrado. ¿Desea habilitar la terminal para la votación?
+                El ciudadano ha sido registrado. 
+                ¿Desea habilitar la terminal para la votación?
             </DialogContentText>
         </DialogContent>
         <DialogActions sx={{ p: 2 }}>
