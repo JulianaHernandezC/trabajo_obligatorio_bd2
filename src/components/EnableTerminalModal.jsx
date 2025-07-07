@@ -8,7 +8,7 @@ import {
     DialogTitle
 } from '@mui/material';
 
-const EnableTerminalModal = ({ onEnable, onClose }) => (
+const EnableTerminalModal = ({ onConfirm, onClose }) => (
     <Dialog open onClose={onClose}>
         <DialogTitle>Registro Exitoso</DialogTitle>
         <DialogContent>
@@ -19,7 +19,7 @@ const EnableTerminalModal = ({ onEnable, onClose }) => (
         </DialogContent>
         <DialogActions sx={{ p: 2 }}>
             <Button onClick={onClose} color="inherit">Cancelar</Button>
-            <Button onClick={onEnable} variant="contained" autoFocus>
+            <Button onClick={onConfirm} variant="contained" autoFocus>
                 Habilitar Terminal
             </Button>
         </DialogActions>

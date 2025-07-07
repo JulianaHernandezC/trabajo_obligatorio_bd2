@@ -60,6 +60,7 @@ export default function App() {
     };
 
     const renderState = () => {
+        //  console.log("Estado actual:", appState);  
         switch (appState) {
             case 'locked':
                 return <LockedScreen onAdminAccess={() => setAppState('presidentLogin')} />;
