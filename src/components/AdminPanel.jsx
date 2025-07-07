@@ -55,13 +55,14 @@ const AdminPanel = ({ onRegistrationSuccess, onNotFound, onClose }) => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
-                    ci_ciudadano: citizen.CI, 
+                    id_ciudadano: citizen.CI, 
                     id_eleccion: CURRENT_ELECTION_ID,
                     credencial_civica: citizen.CredencialCivica,
                     voto_observado: isObserved
                 }),
             });
             console.log(response);
+
 
             if (response.status === 409) {
                 const errorData = await response.json();

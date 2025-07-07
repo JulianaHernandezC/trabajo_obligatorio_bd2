@@ -2,10 +2,10 @@ export const API_BASE_URL = 'http://localhost:3001/api';
 
 export const API_ENDPOINTS = {
     BUSCAR_CIUDADANO: `${API_BASE_URL}/ciudadanos/buscar`,
-    REGISTRAR_VOTANTE: `${API_BASE_URL}/registrar-votante`,
-    VOTAR: `${API_BASE_URL}/votar`,
-    LISTAS: `${API_BASE_URL}/listas`,
-    PAPELETAS: `${API_BASE_URL}/papeletas`,
+    REGISTRAR_VOTANTE: `${API_BASE_URL}/ciudadanos/registrar-votante`,
+    VOTAR: `${API_BASE_URL}/votacion/votar`,
+    LISTAS: `${API_BASE_URL}/votacion/listas`,
+    PAPELETAS: `${API_BASE_URL}/votacion/papeletas`,
     VALIDAR_AUTORIDAD: `${API_BASE_URL}/autoridades/validar`
 };
 
