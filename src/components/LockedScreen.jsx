@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
-import { Box, Typography } from '@mui/material';
-import AppHeader from './AppHeader'; // Importa el encabezado
+import React from 'react';
+import { Box, Typography, Button } from '@mui/material';
+import { Person } from '@mui/icons-material';
+import AppHeader from './AppHeader'; 
 
 const LockedScreen = ({ onAdminAccess }) => {
-    const [clickCount, setClickCount] = useState(0);
-
-    const handleIconClick = () => {
-        const newCount = clickCount + 1;
-        if (newCount >= 5) {
-            onAdminAccess();
-            setClickCount(0);
-        } else {
-            setClickCount(newCount);
-        }
-    };
-
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', bgcolor: 'background.default' }}>
-            <AppHeader />
+            <AppHeader>
+                <Button
+                    variant="contained"
+                    startIcon={<Person />}
+                    onClick={onAdminAccess}
+                    sx={{
+                        bgcolor: 'secondary.main',
+                        color: 'primary.main',
+                        '&:hover': {
+                            bgcolor: 'secondary.dark',
+                        },
+                    }}
+                >
+                    Presidente de Mesa
+                </Button>
+            </AppHeader>
             <Box component="main" sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', p: 3, width: '100%' }}>
                 <Box
                     component="img"
@@ -28,18 +32,13 @@ const LockedScreen = ({ onAdminAccess }) => {
                         maxWidth: 192,
                         height: 'auto',
                         mb: 4,
-                        cursor: 'pointer'
                     }}
-                    onClick={handleIconClick}
                 />
                 <Typography variant="h3" component="h2" gutterBottom sx={{ color: 'primary.main', fontWeight: 'bold' }}>
                     Sistema de Votación
                 </Typography>
                 <Typography variant="h6" color="text.secondary">
                     Esperando al próximo elector.
-                </Typography>
-                <Typography variant="body2" color="text.disabled" sx={{ mt: 4 }}>
-                    El presidente de mesa debe habilitar el sistema.
                 </Typography>
             </Box>
         </Box>
