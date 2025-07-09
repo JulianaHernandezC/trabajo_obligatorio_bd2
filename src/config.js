@@ -6,7 +6,15 @@ export const API_ENDPOINTS = {
     VOTAR: `${API_BASE_URL}/votacion/votar`,
     LISTAS: `${API_BASE_URL}/votacion/listas`,
     PAPELETAS: `${API_BASE_URL}/votacion/papeletas`,
-    VALIDAR_AUTORIDAD: `${API_BASE_URL}/autoridades/validar`
+    VALIDAR_AUTORIDAD: `${API_BASE_URL}/autoridades/validar`,
+    
+    ESTADISTICAS_DEPARTAMENTOS: (id_eleccion) => `${API_BASE_URL}/votacion/estadisticas/${id_eleccion}/departamentos`,
+    ESTADISTICAS_PARTIDOS: (id_eleccion) => `${API_BASE_URL}/votacion/estadisticas/${id_eleccion}/partidos`,
+    ESTADISTICAS_DEPARTAMENTO_DETALLE: (id_eleccion, id_departamento) => `${API_BASE_URL}/votacion/estadisticas/${id_eleccion}/departamentos/${id_departamento}`,
+    ESTADISTICAS_DEPARTAMENTOS_PARTIDOS: (id_eleccion) => `${API_BASE_URL}/votacion/estadisticas/${id_eleccion}/departamentos-partidos`,
+    RANKING_PARTIDOS_DEPARTAMENTO: (id_eleccion, id_departamento) => `${API_BASE_URL}/votacion/estadisticas/${id_eleccion}/departamentos/${id_departamento}/ranking-partidos`,
+    RESUMEN_COMPLETO: (id_eleccion) => `${API_BASE_URL}/votacion/estadisticas/${id_eleccion}/resumen-completo`,
+    ELECCIONES: `${API_BASE_URL}/votacion/elecciones`
 };
 
 export const CURRENT_ELECTION_ID = 1;

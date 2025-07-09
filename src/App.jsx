@@ -7,6 +7,7 @@ import AdminPanel from './components/AdminPanel';
 import EnableTerminalModal from './components/EnableTerminalModal';
 import VotingScreen from './components/VotingScreen';
 import SuccessScreen from './components/SuccessScreen';
+import StatisticsDashboard from './components/StatisticsDashboard';
 import { API_ENDPOINTS } from './config';
 
 const theme = createTheme({
@@ -41,6 +42,10 @@ export default function App() {
         setAppState('confirmEnable');
     };
 
+    const handleFinalizeVoting = useCallback(() => {
+        setAppState('finalStatistics');
+    }, []);
+
     const handleVote = async (payload) => {
         try {
             const response = await fetch(API_ENDPOINTS.VOTAR, {
@@ -63,7 +68,12 @@ export default function App() {
         //  console.log("Estado actual:", appState);  
         switch (appState) {
             case 'locked':
-                return <LockedScreen onAdminAccess={() => setAppState('presidentLogin')} />;
+                return (
+                    <LockedScreen 
+                        onAdminAccess={() => setAppState('presidentLogin')} 
+                        onFinalizeVoting={handleFinalizeVoting}
+                    />
+                );
             case 'presidentLogin':
                 return (
                     <PresidentLoginModal
@@ -77,6 +87,20 @@ export default function App() {
                         onRegistrationSuccess={handleRegistrationSuccess}
                         onNotFound={() => {}}
                         onClose={resetToLocked}
+                        onViewStatistics={() => setAppState('statistics')}
+                    />
+                );
+            case 'statistics':
+                return (
+                    <StatisticsDashboard
+                        onClose={() => setAppState('admin')}
+                    />
+                );
+            case 'finalStatistics':
+                return (
+                    <StatisticsDashboard
+                        onClose={null} // No hay vuelta atrás desde estadísticas finales
+                        isFinalResults={true}
                     />
                 );
             case 'confirmEnable':
@@ -97,7 +121,12 @@ export default function App() {
             case 'success':
                 return <SuccessScreen />;
             default:
-                return <LockedScreen onAdminAccess={() => setAppState('admin')} />;
+                return (
+                    <LockedScreen 
+                        onAdminAccess={() => setAppState('presidentLogin')} 
+                        onFinalizeVoting={handleFinalizeVoting}
+                    />
+                );
         }
     };
 

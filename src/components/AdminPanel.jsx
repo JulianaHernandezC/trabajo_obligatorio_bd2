@@ -1,21 +1,10 @@
 import React, { useState } from 'react';
-import {
-    Modal,
-    Paper,
-    Box,
-    Typography,
-    TextField,
-    Button,
-    CircularProgress,
-    Alert,
-    Avatar,
-    FormControlLabel,
-    Checkbox
-} from '@mui/material';
+import { Modal, Paper, Box, Typography, TextField, Button, CircularProgress, Alert, Avatar, FormControlLabel, Checkbox, IconButton } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
+import { Assessment } from '@mui/icons-material';
 import { API_ENDPOINTS, CURRENT_ELECTION_ID } from '../config';
 
-const AdminPanel = ({ onRegistrationSuccess, onNotFound, onClose }) => {
+const AdminPanel = ({ onRegistrationSuccess, onNotFound, onClose, onViewStatistics }) => {
     const [credencial, setCredencial] = useState('');
     const [citizen, setCitizen] = useState(null);
     const [isObserved, setIsObserved] = useState(false);
@@ -85,9 +74,6 @@ const AdminPanel = ({ onRegistrationSuccess, onNotFound, onClose }) => {
     return (
         <Modal open onClose={onClose} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Paper sx={{ p: 0, width: '100%', maxWidth: 500, m: 2, outline: 'none', borderRadius: 2 }}>
-                <Box sx={{ p: 3, borderBottom: 1, borderColor: 'divider' }}>
-                    <Typography variant="h5" component="h3" sx={{ fontWeight: 'bold' }}>Panel de Administración</Typography>
-                </Box>
                 <Box sx={{ p: 3 }}>
                     <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
                         Busque al ciudadano por su credencial para registrar su participación.
